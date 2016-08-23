@@ -1,0 +1,2 @@
+defmodule Compiletime do
+end
