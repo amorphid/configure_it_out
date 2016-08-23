@@ -1,6 +1,6 @@
 # Compiletime
 
-A collection of helpful compiletime tools
+A collection of helpful compiletime tools for Elixir.
 
 ## Installation
 
