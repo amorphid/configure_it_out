@@ -2,31 +2,45 @@ defmodule Compiletime.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :compiletime,
-     version: "0.1.0",
-     elixir: "~> 1.3",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps()]
+    [
+      app:             :compiletime,
+      build_embedded:  Mix.env == :prod,
+      deps:            deps(),
+      description:     description(),
+      elixir:          "~> 1.3",
+      package:         package(),
+      start_permanent: Mix.env == :prod,
+      version:         "0.1.0",
+    ]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    [
+      applications: applications()
+    ]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
+  defp applications do
+    [
+      :logger
+    ]
+  end
+
   defp deps do
-    []
+    [
+      {:ex_doc, ">= 0.0.0", only: :dev}
+    ]
+  end
+
+  defp description do
+    "A collection of helpful compiletime tools"
+  end
+
+  defp package do
+    %{
+      maintainers: ["Michael Pope"],
+      licenses:    ["Apache 2.0"],
+      links:       %{github: "https://github.com/amorphid/compile"}
+    }
   end
 end
