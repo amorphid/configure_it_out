@@ -1,12 +1,28 @@
 defmodule Compiletime.AppEnvFetcher do
-  def fetch!(_app, :error=_key, _options) do
-    raise "Invalid key=> :error"
-  end
-
   def fetch!(app, key, options) do
+    :ok = fetch_environments!(options)
+
     case Application.fetch_env(app, key) do
       value when value != :error -> value
       :error                     -> raise_error(app, key, options)
+    end
+  end
+
+  defp config_environments do
+    case Application.get_env(:compiletime, :environments) do
+      environments when is_list(environments) -> environments
+      _                                       -> []
+    end
+  end
+
+  defp fetch_environments!(options) do
+    sorted_arg    = Keyword.keys(options) |> Enum.sort
+    sorted_config = Enum.sort(config_environments)
+
+    if sorted_arg != sorted_config do
+      raise_error(:compiletime, :environments, global: sorted_arg)
+    else
+      :ok
     end
   end
 
