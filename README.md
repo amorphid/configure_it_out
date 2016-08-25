@@ -10,6 +10,6 @@ The package can be installed as:
 
     ```elixir
     def deps do
-      [{:compiletime, "~> 0.1.0"}]
+      [{:compiletime, "~> 0.2.0"}]
     end
     ```
