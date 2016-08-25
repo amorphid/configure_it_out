@@ -27,7 +27,7 @@ defmodule Compiletime.AppEnvFetcher do
   defp option_message(app, app_key, {opt_key, opt_value}=_option) do
     """
       add this to #{opt_key} config
-        config #{inspect(app)}, #{inspect(app_key)}, #{inspect(opt_value)}
+        config #{inspect(app)}, #{app_key}: #{inspect(opt_value)}
     """
   end
 
