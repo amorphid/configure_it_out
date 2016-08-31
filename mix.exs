@@ -10,7 +10,7 @@ defmodule Compiletime.Mixfile do
       elixir:          "~> 1.3",
       package:         package(),
       start_permanent: Mix.env == :prod,
-      version:         "0.2.0",
+      version:         "0.3.0-dev",
     ]
   end
 

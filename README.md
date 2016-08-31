@@ -9,7 +9,13 @@ The package can be installed as:
   1. Add `compiletime` to your list of dependencies in `mix.exs`:
 
     ```elixir
+    # stable
     def deps do
       [{:compiletime, "~> 0.2.0"}]
+    end
+
+    # development
+    def deps do
+      [{:compiletime, github: "amorphid/compiletime", branch: "1.30-dev"}]
     end
     ```
