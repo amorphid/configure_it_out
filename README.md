@@ -1,21 +1,21 @@
-# Compiletime
+# ConfigureItOut
 
-A collection of helpful compiletime tools for Elixir.
+A collection of helpful configure_it_out tools for Elixir.
 
 ## Installation
 
 The package can be installed as:
 
-  1. Add `compiletime` to your list of dependencies in `mix.exs`:
+  1. Add `configure_it_out` to your list of dependencies in `mix.exs`:
 
     ```elixir
     # stable
     def deps do
-      [{:compiletime, "~> 0.2.0"}]
+      [{:configure_it_out, "~> 0.2.0"}]
     end
 
     # development
     def deps do
-      [{:compiletime, github: "amorphid/compiletime", branch: "0.3.0-dev"}]
+      [{:configure_it_out, github: "amorphid/configure_it_out", branch: "0.3.0-dev"}]
     end
     ```

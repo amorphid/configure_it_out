@@ -1,13 +1,13 @@
-defmodule CompiletimeTest do
+defmodule ConfigureItOutTest do
   use ExUnit.Case, async: false
   import ExUnit.CaptureLog
 
   def fetch!(app_id, config_key, default_val) do
-    Compiletime.fetch_app_env!(app_id, config_key, default_val)
+    ConfigureItOut.fetch_app_env!(app_id, config_key, default_val)
   end
 
   def fetch!(app_id, config_key, default_val, options) do
-    Compiletime.fetch_app_env!(app_id, config_key, default_val, options)
+    ConfigureItOut.fetch_app_env!(app_id, config_key, default_val, options)
   end
 
   setup_all do

@@ -1,4 +1,4 @@
-defmodule Compiletime.AppEnvFetcher do
+defmodule ConfigureItOut.AppEnvFetcher do
   require Logger
 
   @enforce_keys [:app_id, :config_key, :suggested_val]

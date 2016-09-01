@@ -1,9 +1,9 @@
-defmodule Compiletime.Mixfile do
+defmodule ConfigureItOut.Mixfile do
   use Mix.Project
 
   def project do
     [
-      app:             :compiletime,
+      app:             :configure_it_out,
       build_embedded:  Mix.env == :prod,
       deps:            deps(),
       description:     description(),
@@ -33,7 +33,7 @@ defmodule Compiletime.Mixfile do
   end
 
   defp description do
-    "A collection of helpful compiletime tools"
+    "A collection of helpful configure_it_out tools"
   end
 
   defp package do
