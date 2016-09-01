@@ -1,66 +1,42 @@
 defmodule Compiletime.AppEnvFetcher do
   require Logger
 
-  defstruct [:app_id, :config_key, :config_val, :default_val, :override_val]
+  @enforce_keys [:app_id, :config_key, :suggested_val]
+  defstruct     @enforce_keys
 
-  def fetch!(%__MODULE__{}=state) do
+  def fetch!(%__MODULE__{app_id: app_id, config_key: config_key}=state) do
     state
-    |> fetch_app_env!()
-    |> compare_config_and_override_vals()
-    |> compare_config_and_default_vals()
-    |> Map.get(:config_val)
+    |> fetch_config_val()
   end
 
   def new(app_id, config_key, default_val, options) do
     %__MODULE__{
-      app_id:       app_id,
-      config_key:   config_key,
-      default_val:  default_val,
-      override_val: Keyword.get(options, Mix.env)
+      app_id:        app_id,
+      config_key:    config_key,
+      suggested_val: Keyword.get(options, Mix.env, default_val)
     }
   end
 
-  defp compare_config_and_default_vals(%__MODULE__{
-                                        app_id:       app_id,
-                                        config_key:   config_key,
-                                        config_val:   config_val,
-                                        default_val:  default_val,
-                                        override_val: override_val
-                                      }=state) do
-    if !override_default_val?(override_val) && (config_val != default_val) do
-      Logger.warn("""
-      Unexpected application environment value for '#{inspect(app_id)}, #{inspect(config_key)}'
-      Expected this => #{inspect(config_val)}
-      Got this      => #{inspect(default_val)}
-      """)
-    end
-
-    state
-  end
-
-  defp compare_config_and_override_vals(%__MODULE__{
-                                          config_val:   config_val,
-                                          override_val: override_val
-                                        }=state) do
-    if override_default_val?(override_val) do
-      Map.put(state, :config_val, override_val)
-    else
-      state
+  defp fetch_config_val(%__MODULE__{app_id:     app_id,
+                                    config_key: config_key}=state) do
+    case Application.fetch_env(app_id, config_key) do
+      {:ok, config_val} -> config_val
+      :error            -> raise fetch_config_val_error(state)
     end
   end
 
-  defp fetch_app_env!(%__MODULE__{
-                        app_id:     app_id,
-                        config_key: config_key
-                      }=state) do
-    Map.put(state, :config_val, Application.fetch_env!(app_id, config_key))
-  end
+  defp fetch_config_val_error(%__MODULE__{
+                                app_id:        app_id,
+                                config_key:    config_key,
+                                suggested_val: suggested_val
+                              }=state) do
+    """
 
-  defp override_default_val?(nil) do
-    false
-  end
+    #{IO.ANSI.red()}
+    No application environment variable for '#{inspect(app_id)}, #{inspect(config_key)}'.  Consider adding this to your '#{Mix.env}' config:
 
-  defp override_default_val?(_) do
-    true
+      config #{inspect(app_id)}, #{config_key}: #{inspect(suggested_val)}
+    #{IO.ANSI.default_color()}
+    """
   end
 end
