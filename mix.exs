@@ -11,7 +11,7 @@ defmodule ConfigureItOut.Mixfile do
       elixir:          "~> 1.3",
       package:         package(),
       start_permanent: Mix.env == :prod,
-      version:         "0.3.0-dev",
+      version:         "0.3.0",
     ]
   end
 
@@ -35,7 +35,7 @@ defmodule ConfigureItOut.Mixfile do
   end
 
   defp description do
-    "A collection of helpful configure_it_out tools"
+    "A collection of helpful tools for helping you understand your Elixir application's configuration settings."
   end
 
   defp dialyzer do
@@ -54,7 +54,7 @@ defmodule ConfigureItOut.Mixfile do
     %{
       maintainers: ["Michael Pope"],
       licenses:    ["Apache 2.0"],
-      links:       %{github: "https://github.com/amorphid/compile"}
+      links:       %{github: "https://github.com/amorphid/configure_it_out"}
     }
   end
 end
