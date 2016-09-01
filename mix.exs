@@ -7,6 +7,7 @@ defmodule ConfigureItOut.Mixfile do
       build_embedded:  Mix.env == :prod,
       deps:            deps(),
       description:     description(),
+      dialyzer:        dialyzer(),
       elixir:          "~> 1.3",
       package:         package(),
       start_permanent: Mix.env == :prod,
@@ -28,12 +29,25 @@ defmodule ConfigureItOut.Mixfile do
 
   defp deps do
     [
+      {:dialyxir, "~> 0.3.5", only: [:dev]},
       {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end
 
   defp description do
     "A collection of helpful configure_it_out tools"
+  end
+
+  defp dialyzer do
+    [
+      flags: [
+        "-Werror_handling",
+        "-Wrace_conditions",
+        "-Wunderspecs",
+        "-Wunknown",
+        "-Wunmatched_returns"
+      ]
+    ]
   end
 
   defp package do
