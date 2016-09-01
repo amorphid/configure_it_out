@@ -2,14 +2,14 @@ defmodule ConfigureItOutTest do
   use ExUnit.Case, async: false
 
   def fetch!(app_id, config_key, default_val) do
-    ConfigureItOut.fetch_app_env!(app_id, config_key, default_val)
+    ConfigureItOut.fetch_env!(app_id, config_key, default_val)
   end
 
   def fetch!(app_id, config_key, default_val, options) do
-    ConfigureItOut.fetch_app_env!(app_id, config_key, default_val, options)
+    ConfigureItOut.fetch_env!(app_id, config_key, default_val, options)
   end
 
-  setup_all do
+  setup do
     app_id      = :my_app
     config_key  = :my_config_key
     default_val = MyDefaultVal
