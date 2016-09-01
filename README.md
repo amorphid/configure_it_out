@@ -16,6 +16,6 @@ The package can be installed as:
 
     # development
     def deps do
-      [{:compiletime, github: "amorphid/compiletime", branch: "1.30-dev"}]
+      [{:compiletime, github: "amorphid/compiletime", branch: "0.3.0-dev"}]
     end
     ```
