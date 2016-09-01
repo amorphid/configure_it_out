@@ -14,4 +14,11 @@ defmodule CompiletimeTest do
        %{app_id: app_id, config_key: config_key, config_val: config_val} do
     assert config_val == Compiletime.fetch_app_env!(app_id, config_key)
   end
+
+  test "raising error if no config val",
+       %{app_id: app_id, config_key: config_key} do
+    Application.delete_env(app_id, config_key)
+    assert_raise ArgumentError,
+                 fn -> Compiletime.fetch_app_env!(app_id, config_key) end
+  end
 end
