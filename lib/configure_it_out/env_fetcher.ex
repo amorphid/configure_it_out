@@ -4,7 +4,7 @@ defmodule ConfigureItOut.EnvFetcher do
   @enforce_keys [:app_id, :config_key, :suggested_val]
   defstruct     @enforce_keys
 
-  def fetch!(%__MODULE__{app_id: app_id, config_key: config_key}=state) do
+  def fetch!(%__MODULE__{}=state) do
     state
     |> fetch_config_val()
   end
@@ -29,7 +29,7 @@ defmodule ConfigureItOut.EnvFetcher do
                                 app_id:        app_id,
                                 config_key:    config_key,
                                 suggested_val: suggested_val
-                              }=state) do
+                              }=_state) do
     """
 
     #{IO.ANSI.red()}
