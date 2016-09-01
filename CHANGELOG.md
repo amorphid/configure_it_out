@@ -1,8 +1,15 @@
+## 0.3.0
+
+Updates:
+
+- Change name to ConfigureItOut
+- Added typespec and documentation
+
 ## 0.2.0
 
 Features:
 
-- ConfigureItOut.AppEnvFetcher now checks for environment settings.
+- Compile.AppEnvFetcher now checks for environment settings.
 
 Updates:
 
