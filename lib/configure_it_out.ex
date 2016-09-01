@@ -69,7 +69,7 @@ defmodule ConfigureItOut do
   # Following suggestion in error message, and setting to test.exs
   use Mix.config
 
-  config :my_app, my_key: TestModule #
+  config :my_app, my_key: TestModule
   ```
   ```bash
   # it compiles!

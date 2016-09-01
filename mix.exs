@@ -9,7 +9,10 @@ defmodule ConfigureItOut.Mixfile do
       description:     description(),
       dialyzer:        dialyzer(),
       elixir:          "~> 1.3",
+      homepage_url:    "https://github.com/amorphid/configure_it_out",
+      name:            "ConfigureItOut",
       package:         package(),
+      source_url:      "https://github.com/amorphid/configure_it_out",
       start_permanent: Mix.env == :prod,
       version:         "0.3.0",
     ]
