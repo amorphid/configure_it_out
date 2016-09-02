@@ -1,3 +1,9 @@
+## 0.3.1
+
+Updates:
+
+- Move error handing into ConfigureItOut.EnvFetcher.Error
+
 ## 0.3.0
 
 Updates:

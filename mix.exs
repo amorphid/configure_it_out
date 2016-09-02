@@ -14,7 +14,7 @@ defmodule ConfigureItOut.Mixfile do
       package:         package(),
       source_url:      "https://github.com/amorphid/configure_it_out",
       start_permanent: Mix.env == :prod,
-      version:         "0.3.0",
+      version:         "0.3.1",
     ]
   end
 
